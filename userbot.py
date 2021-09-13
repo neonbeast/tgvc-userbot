@@ -15,13 +15,26 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-# import logging
+import logging
+logging.basicConfig(level=logging.INFO)
 from pyrogram import Client, idle
 
-app = Client("tgvc")
-# logging.basicConfig(level=logging.INFO)
+api_id = 2947167
+api_hash = "8a0d08851dc85e9a18acc56f8f6b6a82"
+
+plugins = dict(
+    root="plugins",
+    include=[
+        "vc.player",
+        "ping",
+        "sysinfo"
+    ]
+)
+
+app = Client("tgvc", api_id, api_hash, plugins=plugins)
 app.start()
 print('>>> USERBOT STARTED')
 idle()
 app.stop()
 print('\n>>> USERBOT STOPPED')
+
